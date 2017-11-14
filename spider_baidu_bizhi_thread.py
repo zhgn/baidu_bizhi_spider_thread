@@ -10,9 +10,9 @@ gCondition=threading.Condition()
 gCondition2=threading.Condition()
 producerlist = []
 gColumn='壁纸'
-gTag='美女'
+gTag='高清壁纸'
 gWidth=1920
-gHeight=1080
+gHeight=1200
 
 def isConsumerHungry():
     global gImageList
@@ -77,6 +77,7 @@ class Consumer(threading.Thread):
             targetpath = 'wallpaperthread'
             targetpath = os.path.join(targetpath, str(gWidth) + 'x' + str(gHeight))
             targetpath = os.path.join(targetpath, gColumn)
+            targetpath = os.path.join(targetpath, gTag)
             if not os.path.isdir(targetpath):
                 os.makedirs(targetpath, exist_ok=True)
             targetpath2 = targetpath + '\\' + url['title']
